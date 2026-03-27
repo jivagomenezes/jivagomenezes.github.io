@@ -1,0 +1,1231 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Jivago Menezes | Data & AI Engineer</title>
+<meta name="description" content="Data & AI Engineer based in Lisbon. Building the data infrastructure that makes AI work in production."/>
+
+<!-- ─── Canonical ────────────────────────────────────────── -->
+<link rel="canonical" href="https://jivagomenezes.github.io"/>
+
+<!-- ─── Open Graph (LinkedIn, WhatsApp, Slack, etc.) ──────── -->
+<meta property="og:type"        content="website"/>
+<meta property="og:url"         content="https://jivagomenezes.github.io"/>
+<meta property="og:title"       content="Jivago Menezes — Data & AI Engineer"/>
+<meta property="og:description" content="Building the data infrastructure that makes AI work in production. Data Engineer @ KLx/AZQORE, Lisbon."/>
+<meta property="og:image"       content="https://jivagomenezes.github.io/og-image.png"/>
+<meta property="og:image:width" content="1200"/>
+<meta property="og:image:height" content="630"/>
+<meta property="og:locale"      content="en_US"/>
+<meta property="og:site_name"   content="Jivago Menezes"/>
+
+<!-- ─── Twitter / X Card ────────────────────────────────── -->
+<meta name="twitter:card"        content="summary_large_image"/>
+<meta name="twitter:url"         content="https://jivagomenezes.github.io"/>
+<meta name="twitter:title"       content="Jivago Menezes — Data & AI Engineer"/>
+<meta name="twitter:description" content="Building the data infrastructure that makes AI work in production. Data Engineer @ KLx/AZQORE, Lisbon."/>
+<meta name="twitter:image"       content="https://jivagomenezes.github.io/og-image.png"/>
+
+<!-- ─── Misc SEO ─────────────────────────────────────────── -->
+<meta name="author"   content="Jivago Menezes"/>
+<meta name="keywords" content="Data Engineer, AI Engineer, RAG, LLM, PySpark, Kafka, Airflow, Lisbon, Portugal"/>
+<meta name="robots"   content="index, follow"/>
+<meta name="theme-color" content="#111318"/>
+
+<!-- ─── Favicon (SVG inline, no file needed) ─────────────── -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%23111318'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='Georgia%2C serif' font-size='40' font-weight='800' fill='%23e8864a'%3EJ%3C/text%3E%3C/svg%3E"/>
+<link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%23111318'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='Georgia%2C serif' font-size='40' font-weight='800' fill='%23e8864a'%3EJ%3C/text%3E%3C/svg%3E"/>
+
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,700;0,6..72,800;1,6..72,300;1,6..72,400&family=Manrope:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+/* ─── Design Tokens ─────────────────────────────────────── */
+:root {
+  --surface:              #111318;
+  --surface-low:          #1a1c20;
+  --surface-mid:          #1e2024;
+  --surface-high:         #282a2e;
+  --surface-highest:      #303438;
+  --on-surface:           #e4e4ea;
+  --on-surface-muted:     #8f9099;
+  --on-surface-faint:     #4a4c52;
+  --primary:              #e8864a;
+  --primary-bright:       #ffb693;
+  --primary-dim:          #d05804;
+  --teal:                 #3da89b;
+  --teal-dim:             #1e6e66;
+  --outline:              rgba(255,255,255,0.06);
+  --outline-visible:      rgba(255,255,255,0.12);
+
+  --font-display: 'Newsreader', Georgia, serif;
+  --font-body:    'Manrope', system-ui, sans-serif;
+  --font-label:   'Space Grotesk', system-ui, sans-serif;
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out:   cubic-bezier(0.45, 0, 0.55, 1);
+}
+
+/* ─── Reset ─────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
+body {
+  background: var(--surface);
+  color: var(--on-surface);
+  font-family: var(--font-body);
+  font-weight: 400;
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: inherit; text-decoration: none; }
+img { display: block; max-width: 100%; }
+::selection { background: var(--primary-dim); color: #fff; }
+
+/* ─── Scrollbar ─────────────────────────────────────────── */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--surface); }
+::-webkit-scrollbar-thumb { background: var(--primary-dim); }
+
+/* ─── Nav ────────────────────────────────────────────────── */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 0 5rem;
+  height: 5.5rem;
+  background: rgba(17,19,24,0.82);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--outline);
+  transition: transform 0.4s var(--ease-out-expo), opacity 0.4s ease;
+}
+.nav.hidden-nav { transform: translateY(-100%); opacity: 0; }
+.nav-brand {
+  display: flex; flex-direction: column; gap: 0.2rem;
+}
+.nav-brand-name {
+  font-family: var(--font-display);
+  font-weight: 800; font-size: 1.15rem;
+  letter-spacing: -0.02em;
+  color: var(--on-surface);
+}
+.nav-brand-sub {
+  font-family: var(--font-label);
+  font-size: 0.6rem; font-weight: 600;
+  letter-spacing: 0.25em; text-transform: uppercase;
+  color: var(--primary);
+}
+.nav-links { display: flex; gap: 3rem; align-items: center; }
+.nav-link {
+  font-family: var(--font-label);
+  font-size: 0.65rem; font-weight: 600;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--on-surface-muted);
+  transition: color 0.3s ease;
+  position: relative;
+}
+.nav-link::after {
+  content: ''; position: absolute; bottom: -4px; left: 0;
+  width: 0; height: 1px; background: var(--primary);
+  transition: width 0.3s var(--ease-out-expo);
+}
+.nav-link:hover { color: var(--primary-bright); }
+.nav-link:hover::after { width: 100%; }
+.nav-cta {
+  font-family: var(--font-label);
+  font-size: 0.65rem; font-weight: 700;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--primary);
+  padding: 0.75rem 1.5rem;
+  border: 1px solid rgba(232,134,74,0.35);
+  position: relative; overflow: hidden;
+  transition: color 0.45s ease;
+}
+.nav-cta::before {
+  content: ''; position: absolute; inset: 0;
+  background: var(--primary);
+  transform: translateY(100%);
+  transition: transform 0.45s var(--ease-out-expo);
+}
+.nav-cta:hover { color: var(--surface); }
+.nav-cta:hover::before { transform: translateY(0); }
+.nav-cta span { position: relative; z-index: 1; }
+
+/* ─── Layout ─────────────────────────────────────────────── */
+.container { max-width: 1440px; margin: 0 auto; padding: 0 5rem; }
+section { scroll-margin-top: 6rem; }
+
+/* ─── Section Label ─────────────────────────────────────── */
+.section-label {
+  font-family: var(--font-label);
+  font-size: 0.6rem; font-weight: 700;
+  letter-spacing: 0.35em; text-transform: uppercase;
+  color: var(--primary);
+  margin-bottom: 2rem;
+  display: flex; align-items: center; gap: 1rem;
+}
+.section-label::after {
+  content: ''; flex: 1; height: 1px;
+  background: linear-gradient(to right, var(--outline-visible), transparent);
+}
+
+/* ─── Hero ───────────────────────────────────────────────── */
+.hero {
+  min-height: 100vh;
+  padding-top: 5.5rem;
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 6rem;
+  align-items: end;
+  padding-bottom: 8rem;
+}
+.hero-location {
+  font-family: var(--font-label);
+  font-size: 0.65rem; font-weight: 700;
+  letter-spacing: 0.35em; text-transform: uppercase;
+  color: var(--primary);
+  margin-bottom: 2.5rem;
+  display: flex; align-items: center; gap: 0.75rem;
+}
+.hero-location::before {
+  content: '';
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--primary);
+  box-shadow: 0 0 12px var(--primary);
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+@keyframes pulse-dot {
+  0%, 100% { box-shadow: 0 0 4px var(--primary); }
+  50% { box-shadow: 0 0 16px var(--primary), 0 0 24px rgba(232,134,74,0.3); }
+}
+.hero-headline {
+  font-family: var(--font-display);
+  font-size: clamp(4rem, 9vw, 8.5rem);
+  font-weight: 800;
+  line-height: 0.88;
+  letter-spacing: -0.03em;
+  margin-bottom: 2.5rem;
+}
+.hero-headline em {
+  font-style: italic;
+  font-weight: 300;
+  color: var(--primary);
+}
+.hero-tagline {
+  font-family: var(--font-body);
+  font-size: 1.15rem;
+  font-weight: 400;
+  color: var(--on-surface-muted);
+  max-width: 540px;
+  line-height: 1.75;
+  margin-bottom: 3.5rem;
+}
+.hero-tagline strong {
+  color: var(--on-surface);
+  font-weight: 600;
+  border-bottom: 1px solid rgba(232,134,74,0.4);
+  padding-bottom: 1px;
+}
+.hero-links { display: flex; gap: 2.5rem; flex-wrap: wrap; }
+.hero-link {
+  font-family: var(--font-label);
+  font-size: 0.65rem; font-weight: 700;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--on-surface-muted);
+  display: flex; align-items: center; gap: 0.75rem;
+  transition: color 0.3s ease;
+}
+.hero-link-line {
+  width: 2rem; height: 1px;
+  background: var(--on-surface-faint);
+  transition: width 0.4s var(--ease-out-expo), background 0.3s ease;
+}
+.hero-link:hover { color: var(--primary-bright); }
+.hero-link:hover .hero-link-line { width: 3.5rem; background: var(--primary); }
+.hero-portrait {
+  align-self: end;
+  position: relative;
+}
+.hero-portrait-img {
+  width: 100%; aspect-ratio: 4/5;
+  object-fit: cover;
+  filter: grayscale(100%) brightness(0.85);
+  transition: filter 1.2s ease;
+}
+.hero-portrait:hover .hero-portrait-img {
+  filter: grayscale(0%) brightness(0.95);
+}
+.hero-portrait-frame {
+  position: absolute; inset: 0;
+  border: 1px solid var(--outline-visible);
+  pointer-events: none;
+}
+.hero-portrait-accent {
+  position: absolute;
+  bottom: -1rem; left: -1rem;
+  width: 6rem; height: 6rem;
+  border-left: 2px solid var(--primary);
+  border-bottom: 2px solid var(--primary);
+  pointer-events: none;
+}
+
+/* ─── About ─────────────────────────────────────────────── */
+.about-section {
+  padding: 10rem 0;
+  display: grid;
+  grid-template-columns: 1fr 1.6fr;
+  gap: 8rem;
+  align-items: start;
+}
+.about-sticky { position: sticky; top: 8rem; }
+.about-headline {
+  font-family: var(--font-display);
+  font-size: 3rem;
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  margin-bottom: 2rem;
+}
+.about-headline em { font-style: italic; font-weight: 300; color: var(--primary); }
+.about-data-point {
+  margin-top: 3rem;
+  display: flex; flex-direction: column; gap: 1.5rem;
+}
+.about-datum {
+  display: flex; flex-direction: column; gap: 0.3rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--outline);
+}
+.about-datum-label {
+  font-family: var(--font-label);
+  font-size: 0.58rem; font-weight: 700;
+  letter-spacing: 0.25em; text-transform: uppercase;
+  color: var(--on-surface-faint);
+}
+.about-datum-value {
+  font-family: var(--font-body);
+  font-size: 0.9rem; font-weight: 600;
+  color: var(--on-surface);
+}
+.about-body { display: flex; flex-direction: column; gap: 2rem; }
+.about-para {
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  line-height: 1.85;
+  font-weight: 400;
+  color: var(--on-surface-muted);
+}
+.about-para strong { color: var(--on-surface); font-weight: 600; }
+.about-para em { color: var(--primary); font-style: italic; }
+.about-highlight {
+  margin-top: 1rem;
+  padding: 2rem 2.5rem;
+  background: var(--surface-low);
+  border-left: 2px solid var(--primary);
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.55;
+  color: var(--on-surface);
+}
+
+/* ─── Stack ─────────────────────────────────────────────── */
+.stack-section { padding: 8rem 0; }
+.stack-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0;
+  border: 1px solid var(--outline-visible);
+  margin-top: 4rem;
+}
+.stack-col {
+  padding: 2.5rem 2rem;
+  border-right: 1px solid var(--outline-visible);
+  transition: background 0.3s ease;
+}
+.stack-col:last-child { border-right: none; }
+.stack-col:hover { background: var(--surface-low); }
+.stack-col-icon {
+  font-size: 1.5rem; margin-bottom: 1.25rem;
+  display: block;
+}
+.stack-col-title {
+  font-family: var(--font-label);
+  font-size: 0.6rem; font-weight: 700;
+  letter-spacing: 0.25em; text-transform: uppercase;
+  color: var(--primary);
+  margin-bottom: 1.5rem;
+}
+.stack-badges { display: flex; flex-direction: column; gap: 0.65rem; }
+.stack-badge {
+  font-family: var(--font-label);
+  font-size: 0.88rem; font-weight: 500;
+  color: var(--on-surface-muted);
+  padding: 0.4rem 0;
+  border-bottom: 1px solid var(--outline);
+  display: flex; align-items: center; gap: 0.5rem;
+  transition: color 0.25s ease;
+}
+.stack-badge::before {
+  content: ''; width: 4px; height: 4px;
+  border-radius: 50%;
+  background: var(--on-surface-faint);
+  flex-shrink: 0;
+  transition: background 0.25s ease;
+}
+.stack-col:hover .stack-badge { color: var(--on-surface); }
+.stack-col:hover .stack-badge::before { background: var(--teal); }
+.stack-badge.expanding::before { background: var(--primary); }
+.stack-badge.expanding { color: var(--primary-bright); }
+
+/* ─── Timeline ───────────────────────────────────────────── */
+.timeline-section { padding: 8rem 0; }
+.timeline-inner {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 8rem;
+  margin-top: 4rem;
+}
+.timeline-list { display: flex; flex-direction: column; position: relative; }
+.timeline-list::before {
+  content: '';
+  position: absolute; left: 0; top: 0.5rem; bottom: 0;
+  width: 1px;
+  background: linear-gradient(to bottom, var(--primary), var(--outline));
+}
+.timeline-item {
+  padding-left: 2.5rem;
+  padding-bottom: 4rem;
+  position: relative;
+  cursor: pointer;
+  opacity: 0.45;
+  transition: opacity 0.3s ease;
+}
+.timeline-item.active { opacity: 1; }
+.timeline-item::before {
+  content: '';
+  position: absolute; left: -4px; top: 0.4rem;
+  width: 9px; height: 9px;
+  border-radius: 50%;
+  background: var(--surface);
+  border: 1px solid var(--on-surface-faint);
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+.timeline-item.active::before {
+  background: var(--primary);
+  border-color: var(--primary);
+  box-shadow: 0 0 12px rgba(232,134,74,0.4);
+}
+.timeline-date {
+  font-family: var(--font-label);
+  font-size: 0.6rem; font-weight: 600;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--on-surface-faint);
+  margin-bottom: 0.5rem;
+}
+.timeline-role {
+  font-family: var(--font-display);
+  font-size: 1.4rem; font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--on-surface);
+  line-height: 1.2;
+}
+.timeline-company {
+  font-family: var(--font-body);
+  font-size: 0.85rem; font-weight: 500;
+  color: var(--primary);
+  margin-top: 0.3rem;
+}
+.timeline-detail {
+  display: none;
+}
+.timeline-detail.active { display: flex; flex-direction: column; gap: 1.5rem; }
+.timeline-detail-header {
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--outline-visible);
+}
+.timeline-detail-role {
+  font-family: var(--font-display);
+  font-size: 2.5rem; font-weight: 700;
+  letter-spacing: -0.02em; line-height: 1.1;
+  margin-bottom: 0.5rem;
+}
+.timeline-detail-co {
+  font-family: var(--font-label);
+  font-size: 0.75rem; font-weight: 600;
+  letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--primary);
+}
+.timeline-detail-desc {
+  font-size: 1rem; line-height: 1.8;
+  color: var(--on-surface-muted);
+}
+.timeline-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.5rem; }
+.timeline-tag {
+  font-family: var(--font-label);
+  font-size: 0.62rem; font-weight: 600;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--teal);
+  padding: 0.35rem 0.75rem;
+  background: rgba(61,168,155,0.08);
+  border: 1px solid rgba(61,168,155,0.2);
+}
+
+/* ─── Projects ───────────────────────────────────────────── */
+.projects-section { padding: 8rem 0; }
+.projects-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr;
+  grid-template-rows: auto auto;
+  gap: 1.5rem;
+  margin-top: 4rem;
+}
+.project-card {
+  background: var(--surface-low);
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.45s var(--ease-out-expo), background 0.3s ease;
+  cursor: pointer;
+}
+.project-card:hover { transform: translateY(-6px); background: var(--surface-mid); }
+.project-card-inner { padding: 2.5rem; height: 100%; display: flex; flex-direction: column; }
+.project-featured {
+  grid-row: span 2;
+  min-height: 560px;
+}
+.project-featured-bg {
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(208,88,4,0.12) 0%, rgba(17,19,24,0) 60%);
+  pointer-events: none;
+}
+.project-card-label {
+  font-family: var(--font-label);
+  font-size: 0.58rem; font-weight: 700;
+  letter-spacing: 0.3em; text-transform: uppercase;
+  color: var(--primary);
+  margin-bottom: 1rem;
+}
+.project-card-title {
+  font-family: var(--font-display);
+  font-size: 1.75rem; font-weight: 700;
+  letter-spacing: -0.015em; line-height: 1.15;
+  margin-bottom: 1rem;
+  flex: 0;
+}
+.project-featured .project-card-title { font-size: 2.5rem; }
+.project-card-desc {
+  font-size: 0.9rem; line-height: 1.75;
+  color: var(--on-surface-muted);
+  flex: 1;
+}
+.project-card-footer {
+  margin-top: 2rem;
+  display: flex; justify-content: space-between; align-items: flex-end;
+}
+.project-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.project-tag {
+  font-family: var(--font-label);
+  font-size: 0.58rem; font-weight: 600;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 0.25rem 0.6rem;
+  background: rgba(255,255,255,0.05);
+  color: var(--on-surface-muted);
+  border: 1px solid var(--outline-visible);
+}
+.project-link-arrow {
+  width: 2.5rem; height: 2.5rem;
+  border: 1px solid var(--outline-visible);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1rem;
+  color: var(--on-surface-muted);
+  transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+  flex-shrink: 0;
+}
+.project-card:hover .project-link-arrow {
+  background: var(--primary);
+  color: var(--surface);
+  border-color: var(--primary);
+}
+.project-coming-soon {
+  border: 1px dashed rgba(255,255,255,0.12);
+  background: transparent;
+  display: flex; align-items: center; justify-content: center;
+}
+.project-coming-soon:hover { background: var(--surface-low); }
+.project-coming-inner {
+  text-align: center; padding: 3rem;
+}
+.project-coming-icon {
+  width: 3rem; height: 3rem;
+  border-radius: 50%;
+  background: rgba(232,134,74,0.1);
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 1.5rem;
+  font-size: 1.2rem;
+}
+.project-coming-title {
+  font-family: var(--font-display);
+  font-size: 1.1rem; font-weight: 700;
+  margin-bottom: 0.75rem;
+}
+.project-coming-status {
+  font-family: var(--font-label);
+  font-size: 0.58rem; font-weight: 700;
+  letter-spacing: 0.25em; text-transform: uppercase;
+  color: var(--primary);
+  animation: blink 2.5s ease-in-out infinite;
+  margin-bottom: 0.75rem;
+}
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.4} }
+.project-coming-desc {
+  font-size: 0.82rem; color: var(--on-surface-muted); line-height: 1.7;
+}
+
+/* ─── Radar / Beyond ─────────────────────────────────────── */
+.radar-section {
+  padding: 8rem 0;
+  display: grid;
+  grid-template-columns: 5fr 7fr;
+  gap: 8rem;
+}
+.radar-items { display: flex; flex-direction: column; gap: 0; margin-top: 3rem; }
+.radar-item {
+  display: flex; gap: 2rem; align-items: flex-start;
+  padding: 2rem 0;
+  border-bottom: 1px solid var(--outline);
+  transition: padding-left 0.3s ease;
+}
+.radar-item:hover { padding-left: 1rem; }
+.radar-num {
+  font-family: var(--font-label);
+  font-size: 0.65rem; font-weight: 700;
+  color: rgba(232,134,74,0.35);
+  margin-top: 0.15rem; flex-shrink: 0;
+  width: 1.5rem;
+}
+.radar-title {
+  font-family: var(--font-body);
+  font-size: 1.05rem; font-weight: 700;
+  margin-bottom: 0.3rem;
+}
+.radar-desc {
+  font-size: 0.85rem; color: var(--on-surface-muted); line-height: 1.7;
+}
+.beyond-headline {
+  font-family: var(--font-display);
+  font-size: 2rem; font-weight: 700; line-height: 1.2;
+  margin: 3rem 0 2rem;
+}
+.beyond-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+.beyond-card {
+  background: var(--surface-low);
+  padding: 2rem;
+  border-left: 2px solid transparent;
+  transition: border-color 0.3s ease, background 0.3s ease;
+}
+.beyond-card:hover { border-color: var(--primary); background: var(--surface-mid); }
+.beyond-card-icon { font-size: 1.75rem; margin-bottom: 1rem; }
+.beyond-card-title {
+  font-family: var(--font-body);
+  font-size: 0.95rem; font-weight: 700;
+  margin-bottom: 0.4rem;
+}
+.beyond-card-desc {
+  font-size: 0.82rem; color: var(--on-surface-muted); line-height: 1.65;
+}
+.beyond-card-link {
+  font-family: var(--font-label);
+  font-size: 0.58rem; font-weight: 700;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--primary);
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  margin-top: 0.75rem;
+  transition: gap 0.3s ease;
+}
+.beyond-card-link:hover { gap: 0.7rem; }
+
+/* ─── CTA ────────────────────────────────────────────────── */
+.cta-section {
+  padding: 10rem 0 8rem;
+  border-top: 1px solid var(--outline);
+  text-align: center;
+}
+.cta-headline {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 7vw, 6.5rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.0;
+  margin-bottom: 1.5rem;
+}
+.cta-headline em {
+  font-style: italic; font-weight: 300; color: var(--primary);
+}
+.cta-sub {
+  font-size: 1rem; color: var(--on-surface-muted);
+  margin-bottom: 3.5rem; line-height: 1.7;
+}
+.cta-buttons { display: flex; justify-content: center; gap: 1.25rem; flex-wrap: wrap; }
+.btn-primary {
+  font-family: var(--font-label);
+  font-size: 0.65rem; font-weight: 700;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--surface);
+  background: var(--primary);
+  padding: 1.1rem 2.5rem;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+.btn-primary:hover { background: var(--primary-bright); transform: translateY(-2px); }
+.btn-outline {
+  font-family: var(--font-label);
+  font-size: 0.65rem; font-weight: 700;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--on-surface-muted);
+  border: 1px solid var(--outline-visible);
+  padding: 1.1rem 2.5rem;
+  transition: border-color 0.3s ease, color 0.3s ease;
+}
+.btn-outline:hover { border-color: var(--primary); color: var(--primary); }
+
+/* ─── Footer ─────────────────────────────────────────────── */
+footer {
+  background: #080a0d;
+  border-top: 1px solid var(--outline);
+  padding: 3.5rem 5rem;
+}
+.footer-inner {
+  max-width: 1440px; margin: 0 auto;
+  display: flex; justify-content: space-between; align-items: center;
+  flex-wrap: wrap; gap: 1.5rem;
+}
+.footer-left {
+  font-family: var(--font-label);
+  font-size: 0.6rem; font-weight: 600;
+  letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--on-surface-faint);
+}
+.footer-links { display: flex; gap: 2.5rem; }
+.footer-link {
+  font-family: var(--font-label);
+  font-size: 0.6rem; font-weight: 600;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--on-surface-faint);
+  transition: color 0.3s ease;
+}
+.footer-link:hover { color: var(--primary); }
+
+/* ─── Scroll Reveal ─────────────────────────────────────── */
+.reveal {
+  opacity: 0; transform: translateY(28px);
+  transition: opacity 0.8s var(--ease-out-expo), transform 0.8s var(--ease-out-expo);
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+
+/* ─── Mobile ─────────────────────────────────────────────── */
+@media (max-width: 1100px) {
+  .container { padding: 0 2.5rem; }
+  .nav { padding: 0 2.5rem; }
+  .hero { grid-template-columns: 1fr; gap: 4rem; }
+  .hero-portrait { display: none; }
+  .about-section { grid-template-columns: 1fr; gap: 4rem; }
+  .about-sticky { position: static; }
+  .stack-grid { grid-template-columns: repeat(3, 1fr); }
+  .timeline-inner { grid-template-columns: 1fr; gap: 3rem; }
+  .timeline-detail { display: flex; }
+  .timeline-detail:not(.active) { display: none; }
+  .projects-grid { grid-template-columns: 1fr 1fr; }
+  .project-featured { grid-row: span 1; grid-column: span 2; }
+  .radar-section { grid-template-columns: 1fr; gap: 4rem; }
+  footer { padding: 3rem 2.5rem; }
+}
+@media (max-width: 700px) {
+  .nav-links { display: none; }
+  .hero { padding: 0 0 5rem; }
+  .hero-headline { font-size: clamp(3rem, 12vw, 5rem); }
+  .stack-grid { grid-template-columns: repeat(2, 1fr); }
+  .projects-grid { grid-template-columns: 1fr; }
+  .project-featured { grid-column: span 1; }
+  .beyond-grid { grid-template-columns: 1fr; }
+  .footer-inner { flex-direction: column; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<!-- ─── Navigation ──────────────────────────────────────── -->
+<nav class="nav" id="nav">
+  <div class="nav-brand">
+    <span class="nav-brand-name">Jivago Menezes</span>
+    <span class="nav-brand-sub">Data &amp; AI Engineering</span>
+  </div>
+  <div class="nav-links">
+    <a class="nav-link" href="#about">About</a>
+    <a class="nav-link" href="#stack">Stack</a>
+    <a class="nav-link" href="#experience">Experience</a>
+    <a class="nav-link" href="#projects">Projects</a>
+    <a class="nav-link" href="#beyond">Beyond</a>
+  </div>
+  <a class="nav-cta" href="/cdn-cgi/l/email-protection#2f4546594e4840424a414a554a5c1e6f48424e4643014c4042">
+    <span>Contact</span>
+  </a>
+</nav>
+
+<main>
+<div class="container">
+
+<!-- ─── Hero ────────────────────────────────────────────── -->
+<section id="hero" class="hero">
+  <div class="hero-content">
+    <p class="hero-location">Lisbon, Portugal</p>
+    <h1 class="hero-headline reveal">
+      Infrastructure<br/>
+      for <em>intelligence.</em>
+    </h1>
+    <p class="hero-tagline reveal reveal-delay-1">
+      Building the data foundations that make <strong>AI work in production</strong> — from the pipeline to the prompt.
+    </p>
+    <div class="hero-links reveal reveal-delay-2">
+      <a class="hero-link" href="https://github.com/jivagomenezes" target="_blank" rel="noopener">
+        <span class="hero-link-line"></span>GitHub
+      </a>
+      <a class="hero-link" href="https://linkedin.com/in/jivagomenezes/" target="_blank" rel="noopener">
+        <span class="hero-link-line"></span>LinkedIn
+      </a>
+      <a class="hero-link" href="/cdn-cgi/l/email-protection#85efecf3e4e2eae8e0ebe0ffe0f6b4c5e2e8e4ece9abe6eae8">
+        <span class="hero-link-line"></span>Email
+      </a>
+    </div>
+  </div>
+  <div class="hero-portrait reveal reveal-delay-2">
+    <img
+      class="hero-portrait-img"
+      src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=80"
+      alt="Jivago Menezes"
+      onerror="this.parentElement.style.display='none'"
+    />
+    <div class="hero-portrait-frame"></div>
+    <div class="hero-portrait-accent"></div>
+  </div>
+</section>
+
+<!-- ─── About ───────────────────────────────────────────── -->
+<section id="about" class="about-section">
+  <div class="about-sticky">
+    <p class="section-label">// The Manifesto</p>
+    <h2 class="about-headline reveal">
+      Systems thinking,<br/>
+      from bits<br/>to <em>baseline.</em>
+    </h2>
+    <div class="about-data-point reveal reveal-delay-1">
+      <div class="about-datum">
+        <span class="about-datum-label">Current Role</span>
+        <span class="about-datum-value">Data Engineer @ KLx / AZQORE</span>
+      </div>
+      <div class="about-datum">
+        <span class="about-datum-label">Location</span>
+        <span class="about-datum-value">Lisbon, Portugal</span>
+      </div>
+      <div class="about-datum">
+        <span class="about-datum-label">Focus</span>
+        <span class="about-datum-value">Data Eng → AI Engineering</span>
+      </div>
+      <div class="about-datum">
+        <span class="about-datum-label">Available For</span>
+        <span class="about-datum-value">Mid-level DE / AI roles &amp; consulting</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="about-body">
+    <p class="about-para reveal">
+      Based in Lisbon, my journey moved from the analytical precision of data discovery to the architectural rigour of Data Engineering at <strong>KLx/AZQORE</strong>. I see infrastructure as a craft — it must be robust enough to support global financial scale, yet agile enough to power the AI revolution.
+    </p>
+    <p class="about-para reveal reveal-delay-1">
+      My expertise sits at the intersection of traditional data plumbing and modern AI workflows. While many focus on the models, I build the <strong>Retrieval-Augmented Generation (RAG)</strong> foundations and high-throughput pipelines that make Large Language Models reliable and scalable in production. Most AI engineers haven't spent years debugging Kafka consumer lag at 3am in a regulated banking environment. I have.
+    </p>
+    <p class="about-para reveal reveal-delay-2">
+      Beyond the terminal, I believe the mindset that solves complex engineering problems is the same one that thrives on the tennis court or decodes geopolitical shifts. I'm a student of systems — whether digital, economic, or strategic — and that curiosity makes me a better engineer.
+    </p>
+    <blockquote class="about-highlight reveal reveal-delay-3">
+      "The gap between AI demos and AI in production is almost always a data pipeline problem."
+    </blockquote>
+  </div>
+</section>
+
+</div><!-- /container -->
+
+<!-- ─── Stack ────────────────────────────────────────────── -->
+<section id="stack" class="stack-section">
+  <div class="container">
+    <div style="display:flex; justify-content:space-between; align-items:baseline; flex-wrap:wrap; gap:1rem;">
+      <p class="section-label">// Core Stack</p>
+      <span style="font-family:var(--font-label); font-size:0.6rem; color:var(--on-surface-faint); letter-spacing:0.15em; text-transform:uppercase;">Updated 2025</span>
+    </div>
+    <div class="stack-grid reveal">
+      <div class="stack-col">
+        <span class="stack-col-icon">⚙️</span>
+        <p class="stack-col-title">Data Engineering</p>
+        <div class="stack-badges">
+          <span class="stack-badge">PySpark</span>
+          <span class="stack-badge">Apache Kafka</span>
+          <span class="stack-badge">Apache Airflow</span>
+          <span class="stack-badge">Python</span>
+          <span class="stack-badge">Qlik Replicate</span>
+        </div>
+      </div>
+      <div class="stack-col">
+        <span class="stack-col-icon">🗄️</span>
+        <p class="stack-col-title">Storage &amp; Databases</p>
+        <div class="stack-badges">
+          <span class="stack-badge">HDFS</span>
+          <span class="stack-badge">IBM DB2</span>
+          <span class="stack-badge">PostgreSQL</span>
+          <span class="stack-badge">Cloudera</span>
+          <span class="stack-badge">Vector DBs</span>
+        </div>
+      </div>
+      <div class="stack-col">
+        <span class="stack-col-icon">🧠</span>
+        <p class="stack-col-title">AI &amp; ML</p>
+        <div class="stack-badges">
+          <span class="stack-badge">RAG Systems</span>
+          <span class="stack-badge">LangChain</span>
+          <span class="stack-badge">LLM Pipelines</span>
+          <span class="stack-badge">Embeddings</span>
+          <span class="stack-badge">Prompt Eng.</span>
+        </div>
+      </div>
+      <div class="stack-col">
+        <span class="stack-col-icon">🛠️</span>
+        <p class="stack-col-title">Infra &amp; DevOps</p>
+        <div class="stack-badges">
+          <span class="stack-badge">GitLab CI/CD</span>
+          <span class="stack-badge">Docker</span>
+          <span class="stack-badge">Git</span>
+          <span class="stack-badge">Linux</span>
+          <span class="stack-badge">Bash</span>
+        </div>
+      </div>
+      <div class="stack-col">
+        <span class="stack-col-icon">🔭</span>
+        <p class="stack-col-title">Expanding</p>
+        <div class="stack-badges">
+          <span class="stack-badge expanding">GCP BigQuery</span>
+          <span class="stack-badge expanding">dbt Core</span>
+          <span class="stack-badge expanding">Terraform</span>
+          <span class="stack-badge expanding">Advanced RAG</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="container">
+
+<!-- ─── Experience ───────────────────────────────────────── -->
+<section id="experience" class="timeline-section">
+  <p class="section-label">// Professional Evolution</p>
+  <p class="reveal" style="max-width:420px; color:var(--on-surface-muted); font-size:0.9rem; line-height:1.75; margin-top:-1rem; margin-bottom:0;">
+    A progression from discovering patterns in data to architecting the systems that move it — and increasingly, the systems that think with it.
+  </p>
+  <div class="timeline-inner">
+    <div class="timeline-list">
+      <div class="timeline-item active" data-detail="detail-0" onclick="setActive(this, 'detail-0')">
+        <p class="timeline-date">Mar 2025 – Present</p>
+        <p class="timeline-role">Data Engineer</p>
+        <p class="timeline-company">KLx / AZQORE · Lisbon</p>
+      </div>
+      <div class="timeline-item" data-detail="detail-1" onclick="setActive(this, 'detail-1')">
+        <p class="timeline-date">Jan 2024 – Jan 2025</p>
+        <p class="timeline-role">Data Analyst</p>
+        <p class="timeline-company">Cross Border Talents · Lisbon</p>
+      </div>
+      <div class="timeline-item" data-detail="detail-2" onclick="setActive(this, 'detail-2')">
+        <p class="timeline-date">Apr – Dec 2023</p>
+        <p class="timeline-role">Data Analytics Intern</p>
+        <p class="timeline-company">Universidade Federal Fluminense · Remote</p>
+      </div>
+    </div>
+    <div>
+      <div class="timeline-detail active" id="detail-0">
+        <div class="timeline-detail-header">
+          <p class="timeline-detail-role">Data Engineer</p>
+          <p class="timeline-detail-co">KLx / AZQORE — Crédit Agricole Group · Lisbon, Portugal</p>
+        </div>
+        <p class="timeline-detail-desc">
+          Designing and maintaining critical data pipelines for large-scale financial platforms in a Swiss-regulated banking environment (AZQORE/Crédit Agricole). Working within a Cloudera on-premises infrastructure, orchestrating complex workflows with Apache Airflow, processing high-volume event streams through Kafka, and transforming data at scale with PySpark. Operating where reliability is non-negotiable and data quality is a compliance matter.
+        </p>
+        <div class="timeline-tags">
+          <span class="timeline-tag">PySpark</span>
+          <span class="timeline-tag">Apache Kafka</span>
+          <span class="timeline-tag">Apache Airflow</span>
+          <span class="timeline-tag">Qlik Replicate</span>
+          <span class="timeline-tag">IBM DB2</span>
+          <span class="timeline-tag">Cloudera</span>
+          <span class="timeline-tag">GitLab CI/CD</span>
+        </div>
+      </div>
+      <div class="timeline-detail" id="detail-1">
+        <div class="timeline-detail-header">
+          <p class="timeline-detail-role">Data Analyst</p>
+          <p class="timeline-detail-co">Cross Border Talents · Lisbon, Portugal</p>
+        </div>
+        <p class="timeline-detail-desc">
+          Transformed recruitment and operational data through advanced analytics, automating data discovery and matching talent with global opportunities. Built ETL pipelines with Python, Pandas, and Airflow that reduced processing time by 30%. Managed PostgreSQL databases and delivered dashboards that gave business stakeholders clear visibility into cross-border hiring patterns.
+        </p>
+        <div class="timeline-tags">
+          <span class="timeline-tag">Python</span>
+          <span class="timeline-tag">Pandas</span>
+          <span class="timeline-tag">Apache Airflow</span>
+          <span class="timeline-tag">PostgreSQL</span>
+          <span class="timeline-tag">ETL</span>
+        </div>
+      </div>
+      <div class="timeline-detail" id="detail-2">
+        <div class="timeline-detail-header">
+          <p class="timeline-detail-role">Data Analytics Intern</p>
+          <p class="timeline-detail-co">Universidade Federal Fluminense · Remote</p>
+        </div>
+        <p class="timeline-detail-desc">
+          Statistical modelling and data preprocessing for academic research projects with a focus on data hygiene and pattern recognition. Built dimensional models and automated data pipelines using Azure Databricks, developing the analytical discipline that later translated directly into production data engineering work.
+        </p>
+        <div class="timeline-tags">
+          <span class="timeline-tag">Azure Databricks</span>
+          <span class="timeline-tag">Python</span>
+          <span class="timeline-tag">Dimensional Modelling</span>
+          <span class="timeline-tag">Statistics</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</div><!-- /container -->
+
+<!-- ─── Projects ─────────────────────────────────────────── -->
+<section id="projects" class="projects-section">
+  <div class="container">
+    <p class="section-label">// Architectural Builds</p>
+    <div class="projects-grid">
+
+      <!-- SmartText AI — Featured -->
+      <div class="project-card project-featured reveal" onclick="window.open('https://github.com/jivagomenezes','_blank')">
+        <div class="project-featured-bg"></div>
+        <div class="project-card-inner">
+          <p class="project-card-label">Feature Select · AI Engineering</p>
+          <h3 class="project-card-title">SmartText AI<br/>— RAG System</h3>
+          <p class="project-card-desc">
+            End-to-end retrieval-augmented generation system for intelligent document querying. Combines LLM pipelines with vector search to deliver contextually precise answers — the infrastructure layer that makes AI actually useful over private data. Built to be production-grade: chunking strategies, embedding pipelines, retrieval tuning.
+          </p>
+          <div class="project-card-footer">
+            <div class="project-tags">
+              <span class="project-tag">LangChain</span>
+              <span class="project-tag">Python</span>
+              <span class="project-tag">RAG</span>
+              <span class="project-tag">Vector DB</span>
+            </div>
+            <div class="project-link-arrow">↗</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stock Pipeline -->
+      <div class="project-card reveal reveal-delay-1" onclick="window.open('https://github.com/jivagomenezes','_blank')">
+        <div class="project-card-inner">
+          <p class="project-card-label">Data Streaming</p>
+          <h3 class="project-card-title">Real-Time Stock Market Pipeline</h3>
+          <p class="project-card-desc">
+            High-throughput ingestion of financial streaming data using Apache Kafka and AWS. Real-time processing with sub-second latency monitoring.
+          </p>
+          <div class="project-card-footer">
+            <div class="project-tags">
+              <span class="project-tag">Kafka</span>
+              <span class="project-tag">AWS</span>
+              <span class="project-tag">Python</span>
+            </div>
+            <div class="project-link-arrow">↗</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Zoomcamp -->
+      <div class="project-card reveal reveal-delay-2" onclick="window.open('https://github.com/jivagomenezes','_blank')">
+        <div class="project-card-inner">
+          <p class="project-card-label">Platform Engineering</p>
+          <h3 class="project-card-title">DE Zoomcamp 2025</h3>
+          <p class="project-card-desc">
+            Full stack data platform using GCP, Terraform, dbt, and Airflow following enterprise-grade engineering patterns and best practices.
+          </p>
+          <div class="project-card-footer">
+            <div class="project-tags">
+              <span class="project-tag">GCP</span>
+              <span class="project-tag">dbt</span>
+              <span class="project-tag">Airflow</span>
+            </div>
+            <div class="project-link-arrow">↗</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Coming Soon -->
+      <div class="project-card project-coming-soon reveal reveal-delay-3" style="grid-column: span 2;">
+        <div class="project-coming-inner">
+          <div class="project-coming-icon">⚡</div>
+          <h3 class="project-coming-title">AI-Powered Data Observability Pipeline</h3>
+          <p class="project-coming-status">In Development · ETA Q3 2025</p>
+          <p class="project-coming-desc">Automated anomaly detection and root cause analysis using fine-tuned small language models on metadata streams.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="container">
+
+<!-- ─── Radar + Beyond ───────────────────────────────────── -->
+<section id="beyond" class="radar-section">
+  <div>
+    <p class="section-label">// On The Radar</p>
+    <h2 class="about-headline reveal" style="font-size:2.5rem;">Focus &amp;<br/><em>Evolution</em></h2>
+    <div class="radar-items">
+      <div class="radar-item reveal">
+        <span class="radar-num">01</span>
+        <div>
+          <p class="radar-title">Advanced RAG Architecture</p>
+          <p class="radar-desc">Exploring agentic workflows, multi-hop retrieval strategies, and hybrid search to improve LLM answer quality over enterprise data.</p>
+        </div>
+      </div>
+      <div class="radar-item reveal reveal-delay-1">
+        <span class="radar-num">02</span>
+        <div>
+          <p class="radar-title">GCP &amp; dbt Specialization</p>
+          <p class="radar-desc">Deepening cloud-native data modelling with BigQuery optimization and dbt Core for analytics engineering workflows.</p>
+        </div>
+      </div>
+      <div class="radar-item reveal reveal-delay-2">
+        <span class="radar-num">03</span>
+        <div>
+          <p class="radar-title">System Design</p>
+          <p class="radar-desc">Going deep on distributed systems: sharding, replication, consistency trade-offs, and how large-scale data architectures are actually built.</p>
+        </div>
+      </div>
+      <div class="radar-item reveal reveal-delay-3">
+        <span class="radar-num">04</span>
+        <div>
+          <p class="radar-title">Data Modeling &amp; Analytics Eng.</p>
+          <p class="radar-desc">Studying dimensional modeling, Kimball vs Vault, and the dbt ecosystem — bridging raw pipelines to clean, queryable data layers.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <p class="section-label">// Beyond The Terminal</p>
+    <h2 class="beyond-headline reveal">The person<br/>behind the pipeline.</h2>
+    <div class="beyond-grid">
+      <div class="beyond-card reveal">
+        <div class="beyond-card-icon">🎾</div>
+        <p class="beyond-card-title">Tennis Strategist</p>
+        <p class="beyond-card-desc">Competitive tennis player. The same pattern recognition and pressure management that wins rallies applies to debugging production incidents.</p>
+      </div>
+      <div class="beyond-card reveal reveal-delay-1">
+        <div class="beyond-card-icon">🎬</div>
+        <p class="beyond-card-title">Films</p>
+        <p class="beyond-card-desc">Good films, lots of them. Into slow burns, political thrillers, and anything that makes you think about power and systems. Tracking everything on Letterboxd.</p>
+        <a class="beyond-card-link" href="https://letterboxd.com/jivagomenezes" target="_blank" rel="noopener">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="display:inline-block;vertical-align:middle;margin-right:4px;"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          Letterboxd
+        </a>
+      </div>
+      <div class="beyond-card reveal reveal-delay-2">
+        <div class="beyond-card-icon">📚</div>
+        <p class="beyond-card-title">Reader of Systems</p>
+        <p class="beyond-card-desc">Geopolitics, economics, history of complex systems. Interested in how institutions are designed, how they scale — and why they eventually fail.</p>
+      </div>
+      <div class="beyond-card reveal reveal-delay-3">
+        <div class="beyond-card-icon">🌍</div>
+        <p class="beyond-card-title">Geopolitics &amp; Macro</p>
+        <p class="beyond-card-desc">Reading the macro forces that shape global trade and technology. The same complexity that drives international systems lives inside distributed data architectures.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CTA ──────────────────────────────────────────────── -->
+<section class="cta-section">
+  <p class="section-label" style="justify-content:center; text-align:center;">// Let's Build</p>
+  <h2 class="cta-headline reveal">
+    Let's build something<br/><em>substantial.</em>
+  </h2>
+  <p class="cta-sub reveal reveal-delay-1">
+    Open to Data Engineering and AI Engineering roles, and consulting projects.<br/>
+    Particularly interested in teams building real AI infrastructure — not demos.
+  </p>
+  <div class="cta-buttons reveal reveal-delay-2">
+    <a class="btn-primary" href="/cdn-cgi/l/email-protection#2f4546594e4840424a414a554a5c1e6f48424e4643014c4042">Hire / Consult</a>
+    <a class="btn-outline" href="https://linkedin.com/in/jivagomenezes/" target="_blank" rel="noopener">View LinkedIn</a>
+    <a class="btn-outline" href="https://github.com/jivagomenezes" target="_blank" rel="noopener">GitHub</a>
+  </div>
+</section>
+
+</div><!-- /container -->
+</main>
+
+<!-- ─── Footer ───────────────────────────────────────────── -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-left">
+      <div>© 2025 Jivago Menezes</div>
+      <div style="margin-top:0.3rem; color:var(--on-surface-faint);">Engineered in Lisbon, Portugal.</div>
+    </div>
+    <div class="footer-links">
+      <a class="footer-link" href="https://github.com/jivagomenezes" target="_blank" rel="noopener">GitHub</a>
+      <a class="footer-link" href="https://linkedin.com/in/jivagomenezes/" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="footer-link" href="/cdn-cgi/l/email-protection#0963607f686e66646c676c736c7a38496e64686065276a6664">Email</a>
+    </div>
+  </div>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+// ─── Nav hide/show on scroll ────────────────────────────
+let lastY = 0;
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  const currentY = window.scrollY;
+  if (currentY > lastY && currentY > 120) {
+    nav.classList.add('hidden-nav');
+  } else {
+    nav.classList.remove('hidden-nav');
+  }
+  lastY = currentY;
+}, { passive: true });
+
+// ─── Scroll reveal ──────────────────────────────────────
+const revealEls = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.08 });
+revealEls.forEach(el => observer.observe(el));
+
+// ─── Timeline tabs ──────────────────────────────────────
+function setActive(item, detailId) {
+  document.querySelectorAll('.timeline-item').forEach(i => i.classList.remove('active'));
+  document.querySelectorAll('.timeline-detail').forEach(d => d.classList.remove('active'));
+  item.classList.add('active');
+  documen
