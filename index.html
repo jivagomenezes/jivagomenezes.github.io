@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Jivago Menezes | Data & AI Engineer</title>
-<meta name="description" content="Data & AI Engineer based in Lisbon. Building the data infrastructure that makes AI work in production."/>
+<title>Jivago Menezes | Data Engineer</title>
+<meta name="description" content="Data Engineer based in Lisbon. Building production-grade pipelines and genuinely passionate about AI engineering."/>
 
 <!-- ─── Canonical ────────────────────────────────────────── -->
 <link rel="canonical" href="https://jivagomenezes.github.io"/>
@@ -12,8 +12,8 @@
 <!-- ─── Open Graph (LinkedIn, WhatsApp, Slack, etc.) ──────── -->
 <meta property="og:type"        content="website"/>
 <meta property="og:url"         content="https://jivagomenezes.github.io"/>
-<meta property="og:title"       content="Jivago Menezes — Data & AI Engineer"/>
-<meta property="og:description" content="Building the data infrastructure that makes AI work in production. Data Engineer @ KLx/AZQORE, Lisbon."/>
+<meta property="og:title"       content="Jivago Menezes — Data Engineer"/>
+<meta property="og:description" content="Data Engineer @ KLx/AZQORE, Lisbon. Building production-grade pipelines and passionate about AI engineering."/>
 <meta property="og:image"       content="https://jivagomenezes.github.io/og-image.png"/>
 <meta property="og:image:width" content="1200"/>
 <meta property="og:image:height" content="630"/>
@@ -23,8 +23,8 @@
 <!-- ─── Twitter / X Card ────────────────────────────────── -->
 <meta name="twitter:card"        content="summary_large_image"/>
 <meta name="twitter:url"         content="https://jivagomenezes.github.io"/>
-<meta name="twitter:title"       content="Jivago Menezes — Data & AI Engineer"/>
-<meta name="twitter:description" content="Building the data infrastructure that makes AI work in production. Data Engineer @ KLx/AZQORE, Lisbon."/>
+<meta name="twitter:title"       content="Jivago Menezes — Data Engineer"/>
+<meta name="twitter:description" content="Data Engineer @ KLx/AZQORE, Lisbon. Building production-grade pipelines and passionate about AI engineering."/>
 <meta name="twitter:image"       content="https://jivagomenezes.github.io/og-image.png"/>
 
 <!-- ─── Misc SEO ─────────────────────────────────────────── -->
@@ -172,12 +172,11 @@ section { scroll-margin-top: 6rem; }
 /* ─── Hero ───────────────────────────────────────────────── */
 .hero {
   min-height: 100vh;
-  padding-top: 5.5rem;
+  padding: 5.5rem 5rem 8rem;
   display: grid;
-  grid-template-columns: 1fr 380px;
+  grid-template-columns: minmax(0, 1fr) 380px;
   gap: 6rem;
   align-items: end;
-  padding-bottom: 8rem;
 }
 .hero-location {
   font-family: var(--font-label);
@@ -250,6 +249,7 @@ section { scroll-margin-top: 6rem; }
 .hero-portrait-img {
   width: 100%; aspect-ratio: 4/5;
   object-fit: cover;
+  border-radius: 0.5rem;
   filter: grayscale(100%) brightness(0.85);
   transition: filter 1.2s ease;
 }
@@ -259,6 +259,7 @@ section { scroll-margin-top: 6rem; }
 .hero-portrait-frame {
   position: absolute; inset: 0;
   border: 1px solid var(--outline-visible);
+  border-radius: 0.5rem;
   pointer-events: none;
 }
 .hero-portrait-accent {
@@ -731,6 +732,97 @@ footer {
 .reveal-delay-3 { transition-delay: 0.3s; }
 .reveal-delay-4 { transition-delay: 0.4s; }
 
+/* ─── Projects grid fix ──────────────────────────────────── */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+.project-featured {
+  grid-column: span 3;
+  min-height: 300px;
+}
+.project-featured .project-card-title { font-size: 2rem; }
+
+/* ─── GitHub repos section ───────────────────────────────── */
+.gh-section { padding: 0 0 8rem; }
+.gh-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+.gh-card {
+  background: var(--surface-mid);
+  border: 1px solid var(--outline);
+  padding: 1.75rem;
+  display: flex; flex-direction: column; gap: 0.75rem;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.3s;
+}
+.gh-card:hover { background: var(--surface-high); transform: translateY(-4px); }
+.gh-card-name {
+  font-family: var(--font-label); font-size: 0.9rem; font-weight: 600;
+  color: var(--on-surface);
+}
+.gh-card-desc {
+  font-size: 0.82rem; color: var(--on-surface-muted); line-height: 1.6; flex: 1;
+}
+.gh-card-meta {
+  display: flex; gap: 1rem; align-items: center;
+  font-family: var(--font-label); font-size: 0.7rem; color: var(--on-surface-faint);
+}
+.gh-card-lang { color: var(--teal); }
+.gh-view-all {
+  display: inline-block; margin-top: 2rem;
+  font-family: var(--font-label); font-size: 0.65rem; font-weight: 600;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--primary); border-bottom: 1px solid rgba(232,134,74,0.35);
+  padding-bottom: 0.2rem;
+  transition: color 0.3s, border-color 0.3s;
+}
+.gh-view-all:hover { color: var(--primary-bright); border-color: var(--primary-bright); }
+.gh-loading {
+  grid-column: span 3;
+  font-family: var(--font-label); font-size: 0.7rem;
+  color: var(--on-surface-faint); letter-spacing: 0.15em; text-transform: uppercase;
+  padding: 2rem 0;
+}
+
+/* ─── Hamburger ──────────────────────────────────────────── */
+.nav-hamburger {
+  display: none; flex-direction: column; gap: 5px;
+  background: none; border: none; cursor: pointer; padding: 0.5rem;
+}
+.nav-hamburger span {
+  display: block; width: 22px; height: 2px;
+  background: var(--on-surface);
+  transition: all 0.3s ease;
+}
+.nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-hamburger.open span:nth-child(2) { opacity: 0; }
+.nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+.nav-mobile-menu {
+  display: none; position: fixed;
+  top: 5.5rem; left: 0; right: 0; z-index: 99;
+  background: rgba(17,19,24,0.97);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--outline);
+  padding: 1.5rem 2.5rem;
+  flex-direction: column; gap: 0;
+}
+.nav-mobile-menu.open { display: flex; }
+.nav-mobile-link {
+  font-family: var(--font-label); font-size: 0.75rem; font-weight: 600;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--on-surface-muted);
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--outline);
+  transition: color 0.3s;
+}
+.nav-mobile-link:hover, .nav-mobile-link:last-child { color: var(--primary); }
+.nav-mobile-link:last-of-type { border-bottom: none; }
+
 /* ─── Mobile ─────────────────────────────────────────────── */
 @media (max-width: 1100px) {
   .container { padding: 0 2.5rem; }
@@ -744,19 +836,138 @@ footer {
   .timeline-detail { display: flex; }
   .timeline-detail:not(.active) { display: none; }
   .projects-grid { grid-template-columns: 1fr 1fr; }
-  .project-featured { grid-row: span 1; grid-column: span 2; }
+  .project-featured { grid-column: span 2; }
+  .gh-grid { grid-template-columns: 1fr 1fr; }
+  .gh-loading { grid-column: span 2; }
   .radar-section { grid-template-columns: 1fr; gap: 4rem; }
   footer { padding: 3rem 2.5rem; }
 }
 @media (max-width: 700px) {
   .nav-links { display: none; }
-  .hero { padding: 0 0 5rem; }
+  .nav-hamburger { display: flex; }
+  .hero { padding: 0 2.5rem 5rem; }
   .hero-headline { font-size: clamp(3rem, 12vw, 5rem); }
   .stack-grid { grid-template-columns: repeat(2, 1fr); }
   .projects-grid { grid-template-columns: 1fr; }
   .project-featured { grid-column: span 1; }
+  .gh-grid { grid-template-columns: 1fr; }
+  .gh-loading { grid-column: span 1; }
   .beyond-grid { grid-template-columns: 1fr; }
+  .gaming-card { grid-column: 1 !important; }
   .footer-inner { flex-direction: column; text-align: center; }
+}
+
+/* ─── Hero Terminal ──────────────────────────────────────── */
+.hero-terminal {
+  margin-top: 2.5rem;
+  background: var(--surface-mid);
+  border: 1px solid var(--outline-visible);
+  border-radius: 0.5rem;
+  overflow: hidden;
+  max-width: 400px;
+  font-family: var(--font-label);
+}
+.hero-terminal-bar {
+  background: var(--surface-high);
+  padding: 0.55rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+.terminal-dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
+.terminal-dot-red    { background: #ff5f57; }
+.terminal-dot-yellow { background: #febc2e; }
+.terminal-dot-green  { background: #28c840; }
+.terminal-bar-title {
+  font-size: 0.65rem; color: var(--on-surface-faint);
+  margin: 0 auto; letter-spacing: 0.03em;
+}
+.hero-terminal-body {
+  padding: 1rem 1.25rem 1.25rem;
+  min-height: 110px;
+  font-size: 0.75rem;
+  line-height: 1.9;
+}
+.terminal-line { display: flex; align-items: baseline; gap: 0.4rem; }
+.terminal-prompt { color: var(--primary); font-weight: 700; flex-shrink: 0; }
+.terminal-cmd { color: var(--on-surface); }
+.terminal-output {
+  color: var(--on-surface-muted);
+  padding-left: 1.1rem;
+  display: block;
+}
+.terminal-output .t-accent { color: var(--teal); }
+.terminal-cursor {
+  display: inline-block;
+  width: 6px; height: 0.85em;
+  background: var(--primary);
+  vertical-align: text-bottom;
+  animation: termBlink 1s step-end infinite;
+}
+@keyframes termBlink { 0%,100% { opacity: 1; } 50% { opacity: 0; } }
+
+/* ─── Letterboxd live films ──────────────────────────────── */
+.lb-films { display: flex; gap: 0.55rem; margin-top: 1rem; }
+.lb-film {
+  display: flex; flex-direction: column; gap: 0.3rem;
+  flex: 1; min-width: 0; text-decoration: none; color: inherit;
+  transition: transform 0.2s ease;
+}
+.lb-film:hover { transform: translateY(-3px); }
+.lb-poster {
+  width: 100%; aspect-ratio: 2/3; object-fit: cover;
+  border-radius: 0.2rem; background: var(--surface-high);
+  display: block;
+}
+.lb-poster-ph { width: 100%; aspect-ratio: 2/3; background: var(--surface-high); border-radius: 0.2rem; }
+.lb-film-title {
+  font-size: 0.67rem; font-weight: 600;
+  color: var(--on-surface); white-space: nowrap;
+  overflow: hidden; text-overflow: ellipsis; display: block;
+}
+.lb-film-rating { font-size: 0.62rem; color: var(--primary); display: block; }
+
+/* ─── Gaming card ────────────────────────────────────────── */
+.gaming-card { grid-column: 1 / -1; }
+.gaming-card-inner {
+  display: flex; gap: 3rem; align-items: flex-start;
+}
+.gaming-card-inner > div:first-child { flex: 1; }
+.gaming-last-played {
+  flex-shrink: 0;
+  display: flex; flex-direction: column; gap: 0.5rem;
+  padding: 1.25rem 1.5rem;
+  background: var(--surface-high);
+  border-radius: 0.25rem;
+  min-width: 180px;
+}
+.gaming-label {
+  font-family: var(--font-label);
+  font-size: 0.55rem; font-weight: 700;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--on-surface-faint);
+}
+.gaming-title {
+  font-family: var(--font-body);
+  font-size: 1rem; font-weight: 700;
+  color: var(--on-surface);
+  line-height: 1.3;
+}
+.gaming-tags { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-top: 0.2rem; }
+.gaming-tag {
+  font-family: var(--font-label);
+  font-size: 0.58rem; font-weight: 600;
+  letter-spacing: 0.06em;
+  padding: 0.2rem 0.55rem;
+  border: 1px solid var(--outline-visible);
+  border-radius: 0.2rem;
+  color: var(--teal);
+}
+.gaming-game-list { display: flex; flex-direction: column; gap: 0.85rem; margin-top: 0.5rem; }
+.gaming-game { display: flex; flex-direction: column; gap: 0.2rem; }
+@media (max-width: 700px) {
+  .gaming-card-inner { flex-direction: column; gap: 1.5rem; }
+  .gaming-last-played { min-width: unset; width: 100%; }
 }
 </style>
 </head>
@@ -766,7 +977,7 @@ footer {
 <nav class="nav" id="nav">
   <div class="nav-brand">
     <span class="nav-brand-name">Jivago Menezes</span>
-    <span class="nav-brand-sub">Data &amp; AI Engineering</span>
+    <span class="nav-brand-sub">Data Engineering</span>
   </div>
   <div class="nav-links">
     <a class="nav-link" href="#about">About</a>
@@ -778,7 +989,20 @@ footer {
   <a class="nav-cta" href="mailto:jivagomenezes1@gmail.com">
     <span>Contact</span>
   </a>
+  <button class="nav-hamburger" id="navHamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+
+<!-- Mobile menu -->
+<div class="nav-mobile-menu" id="navMobileMenu">
+  <a class="nav-mobile-link" href="#about" onclick="closeMobileMenu()">About</a>
+  <a class="nav-mobile-link" href="#stack" onclick="closeMobileMenu()">Stack</a>
+  <a class="nav-mobile-link" href="#experience" onclick="closeMobileMenu()">Experience</a>
+  <a class="nav-mobile-link" href="#projects" onclick="closeMobileMenu()">Projects</a>
+  <a class="nav-mobile-link" href="#beyond" onclick="closeMobileMenu()">Beyond</a>
+  <a class="nav-mobile-link" href="mailto:jivagomenezes1@gmail.com">Contact</a>
+</div>
 
 <main>
 <div class="container">
@@ -792,7 +1016,7 @@ footer {
       for <em>intelligence.</em>
     </h1>
     <p class="hero-tagline reveal reveal-delay-1">
-      Building the data foundations that make <strong>AI work in production</strong> — from the pipeline to the prompt.
+      Data Engineer building production-grade pipelines — and genuinely excited about where <strong>data infrastructure meets AI</strong>.
     </p>
     <div class="hero-links reveal reveal-delay-2">
       <a class="hero-link" href="https://github.com/jivagomenezes" target="_blank" rel="noopener">
@@ -801,9 +1025,23 @@ footer {
       <a class="hero-link" href="https://linkedin.com/in/jivagomenezes/" target="_blank" rel="noopener">
         <span class="hero-link-line"></span>LinkedIn
       </a>
+      <a class="hero-link" href="https://www.upwork.com/freelancers/~018e2c57690df1cf59" target="_blank" rel="noopener">
+        <span class="hero-link-line"></span>Upwork
+      </a>
       <a class="hero-link" href="mailto:jivagomenezes1@gmail.com">
         <span class="hero-link-line"></span>Email
       </a>
+    </div>
+    <div class="hero-terminal reveal reveal-delay-3">
+      <div class="hero-terminal-bar">
+        <span class="terminal-dot terminal-dot-red"></span>
+        <span class="terminal-dot terminal-dot-yellow"></span>
+        <span class="terminal-dot terminal-dot-green"></span>
+        <span class="terminal-bar-title">jivago@lisbon ~ </span>
+      </div>
+      <div class="hero-terminal-body" id="terminalBody">
+        <span class="terminal-cursor" id="termCursor"></span>
+      </div>
     </div>
   </div>
   <div class="hero-portrait reveal reveal-delay-2">
@@ -837,7 +1075,7 @@ footer {
       </div>
       <div class="about-datum">
         <span class="about-datum-label">Focus</span>
-        <span class="about-datum-value">Data Eng → AI Engineering</span>
+        <span class="about-datum-value">Data Engineering</span>
       </div>
       <div class="about-datum">
         <span class="about-datum-label">Available For</span>
@@ -851,7 +1089,7 @@ footer {
       Based in Lisbon, my journey moved from the analytical precision of data discovery to the architectural rigour of Data Engineering at <strong>KLx/AZQORE</strong>. I see infrastructure as a craft — it must be robust enough to support global financial scale, yet agile enough to power the AI revolution.
     </p>
     <p class="about-para reveal reveal-delay-1">
-      My expertise sits at the intersection of traditional data plumbing and modern AI workflows. While many focus on the models, I build the <strong>Retrieval-Augmented Generation (RAG)</strong> foundations and high-throughput pipelines that make Large Language Models reliable and scalable in production. Most AI engineers haven't spent years debugging Kafka consumer lag at 3am in a regulated banking environment. I have.
+      My core is data infrastructure — the pipelines, streaming systems, and data lakes that keep large-scale platforms running reliably. Alongside that work, I've been building <strong>RAG systems</strong> and LLM pipelines as personal projects, genuinely fascinated by how pipeline engineering translates directly into making AI reliable in production. Most AI tools break on bad data. I know how to fix that.
     </p>
     <p class="about-para reveal reveal-delay-2">
       Beyond the terminal, I believe the mindset that solves complex engineering problems is the same one that thrives on the tennis court or decodes geopolitical shifts. I'm a student of systems — whether digital, economic, or strategic — and that curiosity makes me a better engineer.
@@ -869,29 +1107,31 @@ footer {
   <div class="container">
     <div style="display:flex; justify-content:space-between; align-items:baseline; flex-wrap:wrap; gap:1rem;">
       <p class="section-label">// Core Stack</p>
-      <span style="font-family:var(--font-label); font-size:0.6rem; color:var(--on-surface-faint); letter-spacing:0.15em; text-transform:uppercase;">Updated 2025</span>
+      <span style="font-family:var(--font-label); font-size:0.6rem; color:var(--on-surface-faint); letter-spacing:0.15em; text-transform:uppercase;">Updated 2026</span>
     </div>
     <div class="stack-grid reveal">
       <div class="stack-col">
         <span class="stack-col-icon">⚙️</span>
         <p class="stack-col-title">Data Engineering</p>
         <div class="stack-badges">
-          <span class="stack-badge">PySpark</span>
+          <span class="stack-badge">PySpark 3</span>
           <span class="stack-badge">Apache Kafka</span>
           <span class="stack-badge">Apache Airflow</span>
-          <span class="stack-badge">Python</span>
           <span class="stack-badge">Qlik Replicate</span>
+          <span class="stack-badge">Apache Iceberg</span>
+          <span class="stack-badge">Python</span>
         </div>
       </div>
       <div class="stack-col">
         <span class="stack-col-icon">🗄️</span>
         <p class="stack-col-title">Storage &amp; Databases</p>
         <div class="stack-badges">
-          <span class="stack-badge">HDFS</span>
+          <span class="stack-badge">HDFS / Hive</span>
           <span class="stack-badge">IBM DB2</span>
-          <span class="stack-badge">PostgreSQL</span>
+          <span class="stack-badge">SQL Server</span>
+          <span class="stack-badge">Oracle DB</span>
           <span class="stack-badge">Cloudera</span>
-          <span class="stack-badge">Vector DBs</span>
+          <span class="stack-badge">Avro / Parquet</span>
         </div>
       </div>
       <div class="stack-col">
@@ -902,28 +1142,28 @@ footer {
           <span class="stack-badge">LangChain</span>
           <span class="stack-badge">LLM Pipelines</span>
           <span class="stack-badge">Embeddings</span>
-          <span class="stack-badge">Prompt Eng.</span>
+          <span class="stack-badge">Vector DBs</span>
         </div>
       </div>
       <div class="stack-col">
         <span class="stack-col-icon">🛠️</span>
-        <p class="stack-col-title">Infra &amp; DevOps</p>
+        <p class="stack-col-title">Infra &amp; Governance</p>
         <div class="stack-badges">
           <span class="stack-badge">GitLab CI/CD</span>
-          <span class="stack-badge">Docker</span>
-          <span class="stack-badge">Git</span>
-          <span class="stack-badge">Linux</span>
-          <span class="stack-badge">Bash</span>
+          <span class="stack-badge">Apache Ranger</span>
+          <span class="stack-badge">Apache Atlas</span>
+          <span class="stack-badge">YARN / Kerberos</span>
+          <span class="stack-badge">Linux / Bash</span>
         </div>
       </div>
       <div class="stack-col">
         <span class="stack-col-icon">🔭</span>
         <p class="stack-col-title">Expanding</p>
         <div class="stack-badges">
-          <span class="stack-badge expanding">GCP BigQuery</span>
+          <span class="stack-badge expanding">Databricks</span>
+          <span class="stack-badge expanding">Azure</span>
           <span class="stack-badge expanding">dbt Core</span>
-          <span class="stack-badge expanding">Terraform</span>
-          <span class="stack-badge expanding">Advanced RAG</span>
+          <span class="stack-badge expanding">GCP BigQuery</span>
         </div>
       </div>
     </div>
@@ -963,14 +1203,23 @@ footer {
           <p class="timeline-detail-co">KLx / AZQORE — Crédit Agricole Group · Lisbon, Portugal</p>
         </div>
         <p class="timeline-detail-desc">
-          Designing and maintaining critical data pipelines for large-scale financial platforms in a Swiss-regulated banking environment (AZQORE/Crédit Agricole). Working within a Cloudera on-premises infrastructure, orchestrating complex workflows with Apache Airflow, processing high-volume event streams through Kafka, and transforming data at scale with PySpark. Operating where reliability is non-negotiable and data quality is a compliance matter.
+          Building and maintaining two production-grade CDC systems for private banking institutions across Europe, on Cloudera on-premises infrastructure in a Swiss-regulated environment (Crédit Agricole Group).
+        </p>
+        <p class="timeline-detail-desc" style="margin-top:0.75rem;">
+          <strong>Data Lakehouse Pipeline:</strong> end-to-end architecture from DB2 → Qlik Replicate CDC → Kafka (Avro) → PySpark Streaming → Hive/HDFS (Apache Iceberg) → SQL Server, processing 1,000+ tables daily via Airflow-orchestrated batch jobs. Implemented Row-Level Security with Apache Ranger, data lineage with Apache Atlas, and a YAML-driven declarative table spec system.
+        </p>
+        <p class="timeline-detail-desc" style="margin-top:0.75rem;">
+          <strong>IDP Pipeline (IWM):</strong> real-time CDC pipeline replicating Oracle changes to a destination Oracle DB across 9 international sites (LUX, HKG, SNG, ESP…). Built conflation logic (last-per-PK via PySpark window functions), hourly batch orchestration, and atomic Oracle EXCHANGE SUBPARTITION loading.
         </p>
         <div class="timeline-tags">
-          <span class="timeline-tag">PySpark</span>
+          <span class="timeline-tag">PySpark 3</span>
           <span class="timeline-tag">Apache Kafka</span>
-          <span class="timeline-tag">Apache Airflow</span>
+          <span class="timeline-tag">Apache Iceberg</span>
           <span class="timeline-tag">Qlik Replicate</span>
+          <span class="timeline-tag">Apache Airflow</span>
+          <span class="timeline-tag">Apache Ranger</span>
           <span class="timeline-tag">IBM DB2</span>
+          <span class="timeline-tag">Oracle DB</span>
           <span class="timeline-tag">Cloudera</span>
           <span class="timeline-tag">GitLab CI/CD</span>
         </div>
@@ -1077,17 +1326,38 @@ footer {
         </div>
       </div>
 
-      <!-- Coming Soon -->
-      <div class="project-card project-coming-soon reveal reveal-delay-3" style="grid-column: span 2;">
-        <div class="project-coming-inner">
-          <div class="project-coming-icon">⚡</div>
-          <h3 class="project-coming-title">AI-Powered Data Observability Pipeline</h3>
-          <p class="project-coming-status">In Development · ETA Q3 2025</p>
-          <p class="project-coming-desc">Automated anomaly detection and root cause analysis using fine-tuned small language models on metadata streams.</p>
+      <!-- Tennis Intelligence Platform -->
+      <div class="project-card reveal reveal-delay-3" onclick="window.open('https://github.com/jivagomenezes/tennis-data','_blank')">
+        <div class="project-card-inner">
+          <p class="project-card-label">Data Engineering · AI</p>
+          <h3 class="project-card-title">Tennis Intelligence<br/>Platform</h3>
+          <p class="project-card-desc">
+            Medallion pipeline (Bronze → Silver → Gold) over ATP/WTA data with custom metrics: Upset Resistance Score, Comeback Rate, Surface Volatility. dbt + DuckDB transformations, AI narratives via Claude API, Dagster orchestration.
+          </p>
+          <div class="project-card-footer">
+            <div class="project-tags">
+              <span class="project-tag">dbt</span>
+              <span class="project-tag">DuckDB</span>
+              <span class="project-tag">Claude API</span>
+              <span class="project-tag">Dagster</span>
+            </div>
+            <div class="project-link-arrow">↗</div>
+          </div>
         </div>
       </div>
 
     </div>
+  </div>
+</section>
+
+<!-- ─── GitHub Repos ──────────────────────────────────────── -->
+<section class="gh-section">
+  <div class="container">
+    <p class="section-label">// From GitHub</p>
+    <div class="gh-grid" id="ghGrid">
+      <div class="gh-loading">Loading repositories...</div>
+    </div>
+    <a class="gh-view-all" href="https://github.com/jivagomenezes" target="_blank" rel="noopener">View all repositories ↗</a>
   </div>
 </section>
 
@@ -1102,29 +1372,29 @@ footer {
       <div class="radar-item reveal">
         <span class="radar-num">01</span>
         <div>
-          <p class="radar-title">Advanced RAG Architecture</p>
-          <p class="radar-desc">Exploring agentic workflows, multi-hop retrieval strategies, and hybrid search to improve LLM answer quality over enterprise data.</p>
+          <p class="radar-title">Databricks &amp; Azure</p>
+          <p class="radar-desc">Deep-diving into the Databricks Lakehouse Platform — Delta Lake, Unity Catalog, Spark on Azure. Preparing for the Databricks Associate Data Engineer certification. This is the natural evolution of my Cloudera/Iceberg background into the cloud.</p>
         </div>
       </div>
       <div class="radar-item reveal reveal-delay-1">
         <span class="radar-num">02</span>
         <div>
-          <p class="radar-title">GCP &amp; dbt Specialization</p>
-          <p class="radar-desc">Deepening cloud-native data modelling with BigQuery optimization and dbt Core for analytics engineering workflows.</p>
+          <p class="radar-title">dbt Core &amp; Analytics Engineering</p>
+          <p class="radar-desc">Building fluency in dbt — transformation layer, incremental models, tests, and docs. Bridging the gap between raw pipeline work and clean, queryable data products. Kimball vs Vault trade-offs in practice.</p>
         </div>
       </div>
       <div class="radar-item reveal reveal-delay-2">
         <span class="radar-num">03</span>
         <div>
-          <p class="radar-title">System Design</p>
-          <p class="radar-desc">Going deep on distributed systems: sharding, replication, consistency trade-offs, and how large-scale data architectures are actually built.</p>
+          <p class="radar-title">Advanced RAG Architecture</p>
+          <p class="radar-desc">Exploring agentic workflows, multi-hop retrieval, hybrid search, and reranking to build LLM systems that go beyond basic vector search over enterprise data.</p>
         </div>
       </div>
       <div class="radar-item reveal reveal-delay-3">
         <span class="radar-num">04</span>
         <div>
-          <p class="radar-title">Data Modeling &amp; Analytics Eng.</p>
-          <p class="radar-desc">Studying dimensional modeling, Kimball vs Vault, and the dbt ecosystem — bridging raw pipelines to clean, queryable data layers.</p>
+          <p class="radar-title">Distributed Systems Design</p>
+          <p class="radar-desc">Going deeper on the theory behind what I already build in production: consistency trade-offs, replication strategies, partition tolerance — and why the decisions made at 3am matter.</p>
         </div>
       </div>
     </div>
@@ -1136,13 +1406,14 @@ footer {
     <div class="beyond-grid">
       <div class="beyond-card reveal">
         <div class="beyond-card-icon">🎾</div>
-        <p class="beyond-card-title">Tennis Strategist</p>
-        <p class="beyond-card-desc">Competitive tennis player. The same pattern recognition and pressure management that wins rallies applies to debugging production incidents.</p>
+        <p class="beyond-card-title">Tennis</p>
+        <p class="beyond-card-desc">Amateur player who gets on court whenever possible. Left-handed, one-handed backhand — not the most efficient choice, but not changing it. Follows the ATP tour closely, Grand Slams, and occasionally stays up way too late watching a match from the other side of the world.</p>
       </div>
       <div class="beyond-card reveal reveal-delay-1">
         <div class="beyond-card-icon">🎬</div>
         <p class="beyond-card-title">Films</p>
-        <p class="beyond-card-desc">Good films, lots of them. Into slow burns, political thrillers, and anything that makes you think about power and systems. Tracking everything on Letterboxd.</p>
+        <p class="beyond-card-desc">Follows the awards season closely — not just the Oscars, but everything leading up to it. Rates every film on Letterboxd, usually on the way out of the cinema. Slow burns, political thrillers, and anything with an ending you didn't see coming.</p>
+        <div class="lb-films" id="lbFilms"></div>
         <a class="beyond-card-link" href="https://letterboxd.com/jivagomenezes" target="_blank" rel="noopener">
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="display:inline-block;vertical-align:middle;margin-right:4px;"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
           Letterboxd
@@ -1150,13 +1421,53 @@ footer {
       </div>
       <div class="beyond-card reveal reveal-delay-2">
         <div class="beyond-card-icon">📚</div>
-        <p class="beyond-card-title">Reader of Systems</p>
-        <p class="beyond-card-desc">Geopolitics, economics, history of complex systems. Interested in how institutions are designed, how they scale — and why they eventually fail.</p>
+        <p class="beyond-card-title">Books</p>
+        <p class="beyond-card-desc">Geopolitics, history, economics, and the occasional novel. Looks for patterns in how the world works — whether it's a 1973 oil crisis, a novel about the fall of Rome, or a trade war playing out in real time.</p>
+        <div class="lb-films" id="grBooks"></div>
+        <a class="beyond-card-link" href="https://www.goodreads.com/user/show/58288960-jivago-menezes" target="_blank" rel="noopener">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="display:inline-block;vertical-align:middle;margin-right:4px;"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          Goodreads
+        </a>
       </div>
       <div class="beyond-card reveal reveal-delay-3">
         <div class="beyond-card-icon">🌍</div>
-        <p class="beyond-card-title">Geopolitics &amp; Macro</p>
-        <p class="beyond-card-desc">Reading the macro forces that shape global trade and technology. The same complexity that drives international systems lives inside distributed data architectures.</p>
+        <p class="beyond-card-title">Geopolitics</p>
+        <p class="beyond-card-desc">Has strong opinions about why empires collapse. Follows elections, sanctions, and central bank moves the way most people follow football. Probably in the middle of something about China or a European political crisis right now.</p>
+      </div>
+      <div class="beyond-card gaming-card reveal">
+        <div class="gaming-card-inner">
+          <div>
+            <div class="beyond-card-icon">🎮</div>
+            <p class="beyond-card-title">Gaming</p>
+            <p class="beyond-card-desc">Drawn to narrative-driven games — the kind where the story stays with you after the credits roll. Open worlds, thrillers, anything with good writing. Mostly PS5, occasionally PC.</p>
+          </div>
+          <div class="gaming-last-played">
+            <span class="gaming-label">Recently Played</span>
+            <div class="gaming-game-list">
+              <div class="gaming-game">
+                <span class="gaming-title">Red Dead Redemption 2</span>
+                <div class="gaming-tags">
+                  <span class="gaming-tag">Open World</span>
+                  <span class="gaming-tag">PS4</span>
+                </div>
+              </div>
+              <div class="gaming-game">
+                <span class="gaming-title">Alan Wake Remastered</span>
+                <div class="gaming-tags">
+                  <span class="gaming-tag">Thriller</span>
+                  <span class="gaming-tag">PS5</span>
+                </div>
+              </div>
+              <div class="gaming-game">
+                <span class="gaming-title">Marvel's Spider-Man 2</span>
+                <div class="gaming-tags">
+                  <span class="gaming-tag">Action</span>
+                  <span class="gaming-tag">PS5</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -1169,8 +1480,8 @@ footer {
     Let's build something<br/><em>substantial.</em>
   </h2>
   <p class="cta-sub reveal reveal-delay-1">
-    Open to Data Engineering and AI Engineering roles, and consulting projects.<br/>
-    Particularly interested in teams building real AI infrastructure — not demos.
+    Open to Data Engineering roles and consulting projects.<br/>
+    Particularly interested in teams where solid data infrastructure and AI actually meet.
   </p>
   <div class="cta-buttons reveal reveal-delay-2">
     <a class="btn-primary" href="mailto:jivagomenezes1@gmail.com">Hire / Consult</a>
@@ -1192,6 +1503,7 @@ footer {
     <div class="footer-links">
       <a class="footer-link" href="https://github.com/jivagomenezes" target="_blank" rel="noopener">GitHub</a>
       <a class="footer-link" href="https://linkedin.com/in/jivagomenezes/" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="footer-link" href="https://www.upwork.com/freelancers/~018e2c57690df1cf59" target="_blank" rel="noopener">Upwork</a>
       <a class="footer-link" href="mailto:jivagomenezes1@gmail.com">Email</a>
     </div>
   </div>
@@ -1230,6 +1542,136 @@ function setActive(item, detailId) {
   item.classList.add('active');
   document.getElementById(detailId).classList.add('active');
 }
+
+// ─── Hamburger menu ──────────────────────────────────────
+const hamburger = document.getElementById('navHamburger');
+const mobileMenu = document.getElementById('navMobileMenu');
+hamburger.addEventListener('click', () => {
+  hamburger.classList.toggle('open');
+  mobileMenu.classList.toggle('open');
+});
+function closeMobileMenu() {
+  hamburger.classList.remove('open');
+  mobileMenu.classList.remove('open');
+}
+
+// ─── Hero Terminal typewriter ────────────────────────────
+(function () {
+  const body = document.getElementById('terminalBody');
+  const cursor = document.getElementById('termCursor');
+  if (!body || !cursor) return;
+
+  const seq = [
+    { cmd: 'whoami', out: 'Jivago Menezes &mdash; Data Engineer' },
+    { cmd: 'ls projects/', out: '<span class="t-accent">smarttext-rag/</span>  <span class="t-accent">stock-pipeline/</span>  <span class="t-accent">de-zoomcamp/</span>' },
+    { cmd: 'cat stack.txt', out: 'PySpark &middot; Kafka &middot; Airflow &middot; dbt &middot; GCP &middot; Python' },
+  ];
+
+  let si = 0, ci = 0, phase = 'typing', cmdEl = null;
+
+  function tick() {
+    const s = seq[si];
+    if (phase === 'typing') {
+      if (ci === 0) {
+        const line = document.createElement('div');
+        line.className = 'terminal-line';
+        const prompt = document.createElement('span');
+        prompt.className = 'terminal-prompt';
+        prompt.textContent = '→';
+        cmdEl = document.createElement('span');
+        cmdEl.className = 'terminal-cmd';
+        line.appendChild(prompt);
+        line.appendChild(cmdEl);
+        body.insertBefore(line, cursor);
+      }
+      if (ci < s.cmd.length) {
+        cmdEl.textContent += s.cmd[ci++];
+        setTimeout(tick, 55 + Math.random() * 45);
+      } else {
+        phase = 'output';
+        setTimeout(tick, 380);
+      }
+    } else if (phase === 'output') {
+      const out = document.createElement('span');
+      out.className = 'terminal-output';
+      out.innerHTML = s.out;
+      body.insertBefore(out, cursor);
+      phase = 'pause';
+      setTimeout(tick, si < seq.length - 1 ? 820 : 99999);
+    } else if (phase === 'pause') {
+      si++; ci = 0; phase = 'typing';
+      tick();
+    }
+  }
+
+  setTimeout(tick, 1400);
+})();
+
+// ─── Letterboxd live ─────────────────────────────────────
+(function () {
+  const container = document.getElementById('lbFilms');
+  if (!container) return;
+  fetch('https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fletterboxd.com%2Fjivagomenezes%2Frss%2F&count=3')
+    .then(r => r.json())
+    .then(data => {
+      if (!data.items?.length) return;
+      container.innerHTML = data.items.slice(0, 3).map(item => {
+        const posterM = item.description.match(/<img[^>]+src="([^"]+)"/);
+        const ratingM = (item.description + item.title).match(/[★½]+/);
+        const title = item.title.replace(/,\s*\d{4}$/, '').replace(/ - .*$/, '');
+        return `<a class="lb-film" href="${item.link}" target="_blank" rel="noopener">
+          ${posterM ? `<img class="lb-poster" src="${posterM[1]}" alt="${title}" loading="lazy"/>` : '<div class="lb-poster-ph"></div>'}
+          <span class="lb-film-title">${title}</span>
+          ${ratingM ? `<span class="lb-film-rating">${ratingM[0]}</span>` : ''}
+        </a>`;
+      }).join('');
+    })
+    .catch(() => {});
+})();
+
+// ─── Goodreads live ──────────────────────────────────────
+(function () {
+  const container = document.getElementById('grBooks');
+  if (!container) return;
+  fetch('https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fwww.goodreads.com%2Freview%2Flist_rss%2F58288960%3Fshelf%3Dread&count=3')
+    .then(r => r.json())
+    .then(data => {
+      if (!data.items?.length) return;
+      container.innerHTML = data.items.slice(0, 3).map(item => {
+        const posterM = item.description?.match(/<img[^>]+src="([^"]+)"/);
+        const ratingM = item.description?.match(/avg\s*rating:\s*[\d.]+.*?(\d+)\s*of\s*5\s*stars?/i);
+        const stars = item.user_rating ? '★'.repeat(Math.round(Number(item.user_rating))) : '';
+        const title = (item.title || '').replace(/\s*by\s.*$/i, '').trim();
+        return `<a class="lb-film" href="${item.link}" target="_blank" rel="noopener">
+          ${posterM ? `<img class="lb-poster" src="${posterM[1]}" alt="${title}" loading="lazy"/>` : '<div class="lb-poster-ph"></div>'}
+          <span class="lb-film-title">${title}</span>
+          ${stars ? `<span class="lb-film-rating">${stars}</span>` : ''}
+        </a>`;
+      }).join('');
+    })
+    .catch(() => {});
+})();
+
+// ─── GitHub repos ────────────────────────────────────────
+fetch('https://api.github.com/users/jivagomenezes/repos?sort=pushed&per_page=12&type=public')
+  .then(r => r.json())
+  .then(repos => {
+    const filtered = repos.filter(r => !r.fork && r.description).slice(0, 6);
+    if (!filtered.length) { document.querySelector('.gh-section').style.display = 'none'; return; }
+    const langColors = { Python:'#3572A5', JavaScript:'#f1e05a', TypeScript:'#2b7489', SQL:'#e38c00', Shell:'#89e051', Jupyter:'#DA5B0B' };
+    document.getElementById('ghGrid').innerHTML = filtered.map(repo => `
+      <div class="gh-card" onclick="window.open('${repo.html_url}','_blank')">
+        <div class="gh-card-name">${repo.name.replace(/-/g, ' ').replace(/_/g, ' ')}</div>
+        <div class="gh-card-desc">${repo.description}</div>
+        <div class="gh-card-meta">
+          ${repo.language ? `<span class="gh-card-lang" style="color:${langColors[repo.language]||'var(--teal)'}">● ${repo.language}</span>` : ''}
+          ${repo.stargazers_count ? `<span>★ ${repo.stargazers_count}</span>` : ''}
+          <span style="margin-left:auto">↗</span>
+        </div>
+      </div>
+    `).join('');
+  })
+  .catch(() => { document.querySelector('.gh-section').style.display = 'none'; });
 </script>
 </body>
 </html>

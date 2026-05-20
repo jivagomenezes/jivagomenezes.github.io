@@ -1,2 +1,7 @@
 .DS_Store
 .claude/
+# Documentação interna — não publicar
+Azqore_datalake_DOCUMENTATION.md
+azqore_IDP_PIPELINE_OVERVIEW.md
+CLAUDE.md
+indexcomplete.html
